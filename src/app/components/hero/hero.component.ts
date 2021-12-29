@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ViewCounterService } from 'src/app/backend/services';
 
 @Component({
   selector: 'app-hero',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent implements OnInit {
-  input = 'hello';
-  constructor() {}
+  viewCount: number | undefined;
 
-  ngOnInit(): void {}
+  constructor(private viewCounterService: ViewCounterService) {}
+
+  async ngOnInit(): Promise<void> {
+    this.viewCount =
+      (await this.viewCounterService.viewCounterGet().toPromise())?.count ?? 0;
+  }
 }

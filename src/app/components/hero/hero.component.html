@@ -7,8 +7,8 @@
     </h1>
     <img alt="" src="/assets/3d_phone.png" class="h-4/5 hero-img" />
     <div class="flex gap-3 justify-start items-center">
-      <h1 class="text-2xl text-kubakMain">256</h1>
-      <h2 class="font-light">views</h2>
+      <h1 class="text-2xl text-kubakMain">{{ viewCount }}</h1>
+      <h2 class="font-light">view{{ viewCount ?? 0 > 1 ? "s" : "" }}</h2>
     </div>
   </div>
 </div>
